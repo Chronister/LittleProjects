@@ -20,7 +20,7 @@ if "%~1" NEQ "" (
   if /i "%~1"=="headerify"   goto headerify
   goto eof
 )
-goto headerify
+goto bigint
 
 :headerify
     echo Compiling Headerify...
@@ -28,6 +28,11 @@ goto headerify
     echo.
 goto :eof
 
+:bigint
+    echo Compiling Bigint Tests...
+	cl /nologo /MTd /Gm- /GR- /EHa- /Od /Oi /WX /W4 /wd4201 /wd4100 /wd4189 /wd4505 /wd4706 /wd4996 /wd4127 /FC /Z7 /Fm ../../code/windows_bigint_test.cpp /link /incremental:no /opt:ref /subsystem:console,%SUBSYSTEM% /OUT:bigint.exe
+    echo.
+goto :eof
 
 :eof
 popd
